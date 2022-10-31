@@ -1,0 +1,55 @@
+{
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Первый герой",
+      "description": "Первый герой в рейтинге!",
+      "element": "fire"
+    },
+    {
+      "id": 2,
+      "name": "Неизвестный герой",
+      "description": "Скрывающийся в тени",
+      "element": "fire"
+    },
+    {
+      "id": "e89aebed-0dce-4d96-bff3-ce38ae018562",
+      "name": "Jhon",
+      "description": "Писать Код на машинном языке",
+      "element": "water"
+    },
+    {
+      "id": "1d99c19c-2a6d-4e95-a0e3-84072e019dc1",
+      "name": "Jhon",
+      "description": "Git",
+      "element": "wind"
+    }
+  ],
+  "filters": [
+    {
+      "value": "all",
+      "label": "Все",
+      "className": "btn-outline-dark"
+    },
+    {
+      "value": "fire",
+      "label": "Огонь",
+      "className": "btn-danger"
+    },
+    {
+      "value": "water",
+      "label": "Вода",
+      "className": "btn-primary"
+    },
+    {
+      "value": "wind",
+      "label": "Ветер",
+      "className": "btn-success"
+    },
+    {
+      "value": "earth",
+      "label": "Земля",
+      "className": "btn-secondary"
+    }
+  ]
+}
