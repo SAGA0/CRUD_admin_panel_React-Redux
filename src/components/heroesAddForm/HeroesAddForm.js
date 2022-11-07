@@ -17,7 +17,8 @@ import { editHero, heroesCreated } from '../../actions';
 
 const HeroesAddForm = () => {
 
-    const { editHeroId, heroes, filters } = useSelector(state => state)
+    const { editHeroId, heroes } = useSelector(state => state.heroes)
+    const { filters } = useSelector(state => state.filters)
 
     const [heroName, setHeroName] = useState('')
     const [heroDescr, setHeroDescr] = useState('')
@@ -60,6 +61,17 @@ const HeroesAddForm = () => {
         setHeroElement('');
     }
 
+    // const renderFilters = (filters) => {
+
+    //     if (filters && filters.length > 0) {
+    //         return filters.map(({ value, label }) => {
+    //             // eslint-disable-next-line
+    //             if (value === 'all') return;
+
+    //             return <option key={value} value={value}>{label}</option>
+    //         })
+    //     }
+    // }
 
     useEffect(() => {
         if (editHeroId) {
@@ -68,6 +80,7 @@ const HeroesAddForm = () => {
             setHeroDescr(hero.description)
             setHeroElement(hero.element)
         }
+        // eslint-disable-next-line
     }, [editHeroId])
 
 
@@ -120,6 +133,7 @@ const HeroesAddForm = () => {
                     <option value="water">Вода</option>
                     <option value="wind">Ветер</option>
                     <option value="earth">Земля</option> */}
+                    {/* {renderFilters(filters)} */}
                     {filters.slice(1, filters.lenght).map(item => <option key={item.value} value={item.value}>{item.label}</option>)}
                 </select>
             </div>
