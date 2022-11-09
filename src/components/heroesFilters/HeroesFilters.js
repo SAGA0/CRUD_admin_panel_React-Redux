@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useHttp } from '../../hooks/http.hook';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchedFilters, filtersChoosed } from '../../actions'
+import { fetchedFilters } from '../../actions'
+import { filtersChoosed } from './filtersSlice'
 
 // Задача для этого компонента:
 // Фильтры должны формироваться на основании загруженных данных

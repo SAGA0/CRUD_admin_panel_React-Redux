@@ -3,9 +3,11 @@ import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 
-import { fetchedHeroes, deletedHeroes, selectEditHero } from '../../actions';
+import { selectEditHero } from './heroesSlice';
+import { deletedHeroes, fetchedHeroes } from '../../actions';
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
+
 
 // Задача для этого компонента:
 // При клике на "крестик" идет удаление персонажа из общего состояния
@@ -15,6 +17,8 @@ import Spinner from '../spinner/Spinner';
 
 
 const HeroesList = () => {
+
+
 
     const filteredHeroesSelector = createSelector(
         (state) => state.filters.activeFilter,
@@ -29,6 +33,8 @@ const HeroesList = () => {
     )
 
 
+
+
     const { heroesLoadingStatus } = useSelector(state => state);
     const dispatch = useDispatch();
     const { request } = useHttp();
@@ -36,7 +42,7 @@ const HeroesList = () => {
 
     useEffect(() => {
         dispatch(fetchedHeroes(request));
-
+        console.log('chang')
         // eslint-disable-next-line
     }, []);
 

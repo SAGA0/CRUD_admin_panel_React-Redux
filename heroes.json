@@ -2,27 +2,27 @@
   "heroes": [
     {
       "id": 2,
-      "name": "Неизвестный герой",
+      "name": "Неизвестный герой2",
       "description": "Скрывающийся в тени",
       "element": "fire"
     },
     {
-      "id": "0f72b46e-2f26-45dc-95c4-f59a6946293d",
-      "name": "Jhon",
-      "description": "gugu gags",
-      "element": "earth"
-    },
-    {
       "id": "ca3ab2bd-790c-4322-a834-28aa1bdfcb90",
-      "name": "Mafia",
+      "name": "Julio00",
       "description": "kill people",
       "element": "wind"
     },
     {
-      "id": "3a36eb99-5aa9-4311-8c65-c831a835e876",
-      "name": "MAGA",
-      "description": "view",
+      "id": "39d0315b-2cfe-4015-a336-7ee781828918",
+      "name": "MAGA00",
+      "description": "ggggg",
       "element": "water"
+    },
+    {
+      "id": "c2933e22-b076-44da-9b76-556394f92c86",
+      "name": "Jhon0",
+      "description": "ggg",
+      "element": "fire"
     }
   ],
   "filters": [

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
-import { editHero, heroesCreated } from '../../actions';
+import { editHero, heroesCreated } from '../heroesList/heroesSlice';
 
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
