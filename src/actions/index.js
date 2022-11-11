@@ -1,12 +1,5 @@
-import { heroesFetched, heroesFetching, heroesFetchingError, heroesDeleted, } from "../components/heroesList/heroesSlice"
+import { heroesFetchingError, heroesDeleted, } from "../components/heroesList/heroesSlice"
 import { filtersFetched } from '../components/heroesFilters/filtersSlice'
-
-export const fetchedHeroes = (request) => (dispatch) => {
-    dispatch(heroesFetching())
-    request("http://localhost:3001/heroes")
-        .then(data => dispatch(heroesFetched(data)))
-        .catch(() => dispatch(heroesFetchingError()))
-}
 
 
 export const deletedHeroes = (request, id) => (dispatch) => {

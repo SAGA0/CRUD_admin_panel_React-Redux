@@ -3,8 +3,8 @@ import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 
-import { selectEditHero } from './heroesSlice';
-import { deletedHeroes, fetchedHeroes } from '../../actions';
+import { selectEditHero, fetchedHeroes } from './heroesSlice';
+import { deletedHeroes } from '../../actions'
 import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from '../spinner/Spinner';
 
@@ -31,6 +31,8 @@ const HeroesList = () => {
             }
         }
     )
+
+
 
 
 
