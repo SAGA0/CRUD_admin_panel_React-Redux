@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useHttp } from '../../hooks/http.hook';
 import { useDispatch, useSelector } from 'react-redux';
-import { filtersChoosed, fetchedFilters } from './filtersSlice'
+import { filtersChoosed, fetchedFilters, filteredFiltersSelector } from './filtersSlice'
 
 // Задача для этого компонента:
 // Фильтры должны формироваться на основании загруженных данных
@@ -12,9 +12,12 @@ import { filtersChoosed, fetchedFilters } from './filtersSlice'
 
 const HeroesFilters = () => {
 
-    const { filters, activeFilter } = useSelector(state => state.filters)
+    const { activeFilter } = useSelector(state => state.filters)
     const dispatch = useDispatch()
     const { request } = useHttp()
+    const filteredfilters = useSelector(filteredFiltersSelector)
+
+
 
     useEffect(() => {
         dispatch(fetchedFilters(request))
@@ -24,6 +27,8 @@ const HeroesFilters = () => {
     const onFiltred = (activeFilter) => {
         dispatch(filtersChoosed(activeFilter))
     }
+
+    console.log(filteredfilters)
 
 
 
@@ -37,7 +42,7 @@ const HeroesFilters = () => {
                 <p className="card-text">Отфильтруйте героев по элементам</p>
                 <div className="btn-group">
                     {/* {elements} */}
-                    {filters.map(item => <button onClick={() => onFiltred(item.value)} key={item.value} className={`btn ${item.className} ${item.value === activeFilter ? 'active' : ''}`}>{item.label}</button>)}
+                    {filteredfilters.map(item => <button onClick={() => onFiltred(item.value)} key={item.value} className={`btn ${item.className} ${item.value === activeFilter ? 'active' : ''}`}>{item.label}</button>)}
                 </div>
             </div>
         </div>

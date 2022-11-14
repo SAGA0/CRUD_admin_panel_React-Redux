@@ -2,45 +2,50 @@
   "heroes": [
     {
       "id": 2,
-      "name": "Неизвестный герой2123",
+      "name": "Неизвестный герой21233",
       "description": "Скрывающийся в тени",
       "element": "fire"
     },
     {
-      "id": "1dfff32f-f282-43b1-9bd4-9bc383e9bf55",
-      "name": "MAGA18",
-      "description": "121212",
-      "element": "earth"
-    },
-    {
       "id": "925f42d2-7f59-49e4-bddd-8d105258d4f8",
-      "name": "Jhon122",
+      "name": "Jhon1285",
       "description": "12121212",
       "element": "water"
+    },
+    {
+      "id": "d7862f84-bf54-48dc-87cb-3ce5d051122b",
+      "name": "Морской герой1111",
+      "description": "swim like aquamen",
+      "element": "wind"
     }
   ],
   "filters": [
     {
+      "id": "all",
       "value": "all",
       "label": "Все",
       "className": "btn-outline-dark"
     },
     {
+      "id": "fire",
       "value": "fire",
       "label": "Огонь",
       "className": "btn-danger"
     },
     {
+      "id": "water",
       "value": "water",
       "label": "Вода",
       "className": "btn-primary"
     },
     {
+      "id": "wind",
       "value": "wind",
       "label": "Ветер",
       "className": "btn-success"
     },
     {
+      "id": "earth",
       "value": "earth",
       "label": "Земля",
       "className": "btn-secondary"

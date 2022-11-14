@@ -1,11 +1,18 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createEntityAdapter, createSelector } from "@reduxjs/toolkit";
 import { useHttp } from "../../hooks/http.hook";
 
-const initialState = {
-    heroes: [],
+const heroesAdapter = createEntityAdapter();
+
+// const initialState = {
+//     heroes: [],
+//     heroesLoadingStatus: 'idle',
+//     editHeroId: ''
+// }
+
+const initialState = heroesAdapter.getInitialState({
     heroesLoadingStatus: 'idle',
     editHeroId: ''
-}
+})
 
 export const fetchedHeroes = createAsyncThunk(
     'heroes/fetchedHeroes',
@@ -29,14 +36,14 @@ const heroesSlice = createSlice({
     initialState,
     reducers: {
         heroesDeleted: (state, action) => {
-            state.heroes = state.heroes.filter(item => item.id !== action.payload)
+            heroesAdapter.removeOne(state, action.payload)
         },
         heroesCreated: (state, action) => {
-            state.heroes.push(action.payload)
+            heroesAdapter.addOne(state, action.payload)
 
         },
         editHero: (state, action) => {
-            state.heroes = state.heroes.map(item => item.id === action.payload.id ? action.payload : item);
+            heroesAdapter.upsertOne(state, action.payload)
             state.editHeroId = '';
 
         },
@@ -49,12 +56,12 @@ const heroesSlice = createSlice({
             .addCase(fetchedHeroes.pending, state => { state.heroesLoadingStatus = 'loading' })
             .addCase(fetchedHeroes.fulfilled, (state, action) => {
                 state.heroesLoadingStatus = 'idle';
-                state.heroes = action.payload
+                heroesAdapter.setAll(state, action.payload)
             })
             .addCase(fetchedHeroes.rejected, state => { state.heroesLoadingStatus = 'error' })
             .addCase(deletedHeroes.pending, state => { state.heroesLoadingStatus = 'loading' })
             .addCase(deletedHeroes.fulfilled, (state, action) => {
-                state.heroes = state.heroes.filter(item => item.id !== action.payload.id)
+                heroesAdapter.removeOne(state, action.payload)
             })
             .addCase(deletedHeroes.rejected, state => { state.heroesLoadingStatus = 'error' })
             .addDefaultCase(() => { })
@@ -64,6 +71,20 @@ const heroesSlice = createSlice({
 const { actions, reducer } = heroesSlice
 
 export default reducer
+
+export const { selectAll } = heroesAdapter.getSelectors(state => state.heroes);
+
+export const filteredHeroesSelector = createSelector(
+    (state) => state.filters.activeFilter,
+    selectAll,
+    (filter, heroes) => {
+        if (filter === 'all') {
+            return heroes;
+        } else {
+            return heroes.filter(item => item.element === filter);
+        }
+    }
+);
 
 export const {
     heroesFetching,

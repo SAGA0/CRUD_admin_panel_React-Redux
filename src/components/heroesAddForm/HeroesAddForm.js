@@ -2,8 +2,10 @@ import { useHttp } from '../../hooks/http.hook';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import store from '../../store'
 
-import { editHero, heroesCreated } from '../heroesList/heroesSlice';
+import { editHero, heroesCreated, selectAll } from '../heroesList/heroesSlice';
+import { filteredFiltersSelector } from '../heroesFilters/filtersSlice'
 
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
@@ -17,8 +19,9 @@ import { editHero, heroesCreated } from '../heroesList/heroesSlice';
 
 const HeroesAddForm = () => {
 
-    const { editHeroId, heroes } = useSelector(state => state.heroes)
-    const { filters } = useSelector(state => state.filters)
+    const { editHeroId } = useSelector(state => state.heroes)
+    // const { filters } = useSelector(state => state.filters)
+    const filteredfilters = useSelector(filteredFiltersSelector)
 
     const [heroName, setHeroName] = useState('')
     const [heroDescr, setHeroDescr] = useState('')
@@ -75,7 +78,7 @@ const HeroesAddForm = () => {
 
     useEffect(() => {
         if (editHeroId) {
-            const hero = heroes.find(item => item.id === editHeroId)
+            const hero = selectAll(store.getState()).find(item => item.id === editHeroId)
             setHeroName(hero.name)
             setHeroDescr(hero.description)
             setHeroElement(hero.element)
@@ -134,7 +137,7 @@ const HeroesAddForm = () => {
                     <option value="wind">Ветер</option>
                     <option value="earth">Земля</option> */}
                     {/* {renderFilters(filters)} */}
-                    {filters.slice(1, filters.lenght).map(item => <option key={item.value} value={item.value}>{item.label}</option>)}
+                    {filteredfilters.slice(1, filteredfilters.lenght).map(item => <option key={item.value} value={item.value}>{item.label}</option>)}
                 </select>
             </div>
 
